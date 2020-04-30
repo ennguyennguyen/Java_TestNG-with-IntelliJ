@@ -47,4 +47,29 @@ driver.get("https://opensource-demo.orangehrmlive.com/");
 WebElement logo = driver.findElement(By.xpath("//*[@id=\"divLogo\"]/img"));
 Assert.assertTrue(logo.isDisplayed());
 ```
-    
+- Using Parameters: use the Parameter annotation in your test file, and reconfig the xml file using the <parameter> tag
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <parameter name="browser" value="chrome"/>
+    <parameter name="url" value="https://opensource-demo.orangehrmlive.com/"/>
+    <test verbose="2" preserve-order="true"
+          name="D:/00_MASTER OF COMPUTER SCIENCE_MUM/00_Projects/13_TestNG/src/com/company/ParameterExample.java">
+        <classes>
+            <class name="com.company.ParameterExample">
+            </class>
+        </classes>
+    </test>
+</suite>
+```
+- Use Data Provider: use DataProvider annotation and define the method to get data
+   + Internal Data Provider
+```
+@Test(dataProvider = "dataProvider")
+```
+   + External Data Provider
+```
+@Test(dataProvider = "customerDataProvider", dataProviderClass = CustomerDataProvider.class)
+```
+- Parallel Testing

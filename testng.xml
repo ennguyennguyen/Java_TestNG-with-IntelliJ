@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
+    <parameter name="browser" value="chrome"/>
+    <parameter name="url" value="https://opensource-demo.orangehrmlive.com/"/>
     <test verbose="2" preserve-order="true"
-          name="GroupingTest">
-        <groups>
-            <run>
-                <exclude name="sanityTest"/>
-            </run>
-        </groups>
-
+          name="D:/00_MASTER OF COMPUTER SCIENCE_MUM/00_Projects/13_TestNG/src/com/company/ParameterExample.java">
         <classes>
-            <class name = "com.company.GroupingTest"/>
+            <class name="com.company.ParameterExample">
+            </class>
         </classes>
     </test>
 </suite>
