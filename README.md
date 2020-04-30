@@ -5,7 +5,7 @@ This project is about basic understanding and commands of using TestNG
 - Define a simple test case and set Priority
 - install TestNG XML plugin and use TestNG XML to run test
 - Configure IntelliJ to generate reports:
-   + go to Run -> Edit Configuration -> under Listeners, add the following:
+   + go to Run -> Edit Configuration -> under listeners, add the following:
         1. EmailableReporter
         2. FailedReporter
    + after running the test case, observer test-output -> open report by any browser to see the result.
@@ -110,4 +110,42 @@ Assert.assertTrue(logo.isDisplayed());
         </test>
     </suite>
     ```
-- Using TestNG Listeners:
+- Using TestNG listeners: using iTestListener interface (refer to JavaDoc of TestNG for more details)
+    + Step 1: create a CustomListener class implement ITestListener interface
+    + Step 2: implements the methods with the appropriate actions
+    + Step 3: from your Test class, use the ```@Listener``` annotation to declare the CustomListener class
+    ```
+  public class CustomListeners implements ITestListener {
+  
+      @Override
+      public void onStart(ITestContext arg) {
+          System.out.println("Start test execution..." + arg.getName());
+      }
+  .....
+  ```
+  ```
+  @Listeners(listeners.CustomListeners.class)
+  public class ListenerTest {
+  
+      @Test
+      void test1(){
+          System.out.println("Running test 1...");
+          Assert.assertEquals("A", "A");
+      }
+  ......
+   ```
+  NOTE: you can also use the XML file to declare the CustomListener. With this approach, you don't need to use the ```@Listener``` annotation in your test class.
+  ```
+  <suite name="All Test Suite">
+      
+      <listeners>
+          <listener class-name="listeners.CustomListeners"/>
+      </listeners>
+      
+      <test name = "testListener">
+          <classes>
+              <class name="listeners.ListenerTest"/>
+          </classes>
+      </test>
+  </suite>
+  ```

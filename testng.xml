@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite" parallel="tests" thread-count="2">
-    <test name="test1">
+<suite name="All Test Suite">
+    
+    <listeners>
+        <listener class-name="listeners.CustomListeners"/>
+    </listeners>
+    
+    <test verbose="2" preserve-order="true"
+          name="D:/00_MASTER OF COMPUTER SCIENCE_MUM/00_Projects/13_TestNG/src/listeners/ListenerTest.java">
         <classes>
-            <class name="ParallelTesting.ParallelTest1"/>
-        </classes>
-    </test>
-
-    <test name="test2">
-        <classes>
-            <class name="ParallelTesting.ParallelTest2"/>
+            <class name="listeners.ListenerTest"/>
         </classes>
     </test>
 </suite>
